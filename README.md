@@ -42,7 +42,7 @@ Traditional clustering methods often struggle with large and complex datasets du
 
 ## ⚙️ Usage
 
-1. Prepare your dataset in `.mat` or `.txt` format, ensuring it contains a variable representing an \( N \times D \) matrix (N instances, D feature).
+1. Prepare your dataset in `.mat` or `.txt` format, ensuring it contains a variable representing an $N \times D$ matrix (N instances, D feature).
 
 2. Place your dataset in the `Datasets/` directoy.
 
@@ -56,9 +56,9 @@ Traditional clustering methods often struggle with large and complex datasets du
 
 5. Adjust parameters within the script as needed:
   - `num_samples`: Number of sample sets (default: 30)
-  - `alpha`: Sampling proportion (default: \( $\frac{1}{\sqrt{n}}$ ))
+  - `alpha`: Sampling proportion (default: $\frac{1}{\sqrt{n}}$ )
   - `k`: Number of peak balls or desired clusters
-  - `target_ball_count`: Target number of balls per sample set (default: \( 10 \times k ))
+  - `target_ball_count`: Target number of balls per sample set (default: $10 \times k$ )
 
 ## 📊 Outpt
 
@@ -72,7 +72,7 @@ Upon execution, results are stored in the `experiment_records/` directory, organ
 
 GBSK is designed for efficiency and scalabiity:
 
-- **Time Complexity**: O(n), significantly reduced compared to traditional clustering methods on large dataets.
+- **Time Complexity**: $O(n)$, significantly reduced compared to traditional clustering methods on large dataets.
 - **Scalability**: Capable of handling datasets with millions of instances.
 - **Robustness**: Effective in the presence of noise and outliers due to multi-sampling and density-based techniues.
 
