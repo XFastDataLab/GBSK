@@ -3,35 +3,38 @@
 **GBSK** is a scalable clustering algorithm designed for large-scale, complex datasets. It integrates granular-ball computing with multi-sampling strategies to efficiently uncover the intrinsic skeleton of data distributions.
 
 ## 🔍 Overview
-Traditional clustering methods often struggle with large and complex datasets due to computational constraints and sensitivity to noise. GBSK addresses these challenges by
+Traditional clustering methods often struggle with large and complex datasets due to computational constraints and sensitivity to noise. GBSK addresses these challenges by:
 
--Employing **granular-ball computing** to capture local data structures
--Utilizing **multi-sampling** to enhance robustness and scalability
--Constructing a **skeleton** that represents the core structure of the data, facilitating efficient clustering.
+- Employing **granular-ball computing** to capture local data structures,
+- Utilizing **multi-sampling** to enhance robustness and scalability,
+- Constructing a **skeleton** that represents the core structure of the data, facilitating efficient clustering.
 
 ## 📁 Repository Structure
 
  `Algorithms/`: Contains the core implementation of the GBSK algorithm and competing algorithms.
+ 
  `Datasets/`: Some datasets for testing and demonstration purpose.
+ 
  `experiment_records/`: Logs and results from various experimental run.
+ 
  `README.md`: This documentation file.
+ 
  `LICENSE`: GPL-3.0 license information.
 
 ## 🚀 Getting Started
 
 ### Prerequisites
-- MATLAB (recommended version R2021a or later)- Required MATLAB toolboxs:
- - Statistics and Machine Learning Toolox
+- MATLAB (recommended version R2021a or later)
 
 ### Installation
 
-. Clone the repositoy:
+1. Clone the repositoy:
    ```bash
    git clone https://github.com/XFastDataLab/GBSK.git
    ```
 
 
-. Add the `Algorithms/` directory to your MATLAB pah:
+2. Add the `Algorithms/` directory to your MATLAB pah:
    ```matlab
    addpath(genpath('path_to_GBSK/Algorithms'));
    ```
@@ -39,19 +42,19 @@ Traditional clustering methods often struggle with large and complex datasets du
 
 ## ⚙️ Usage
 
-. Prepare your dataset in `.mat` or '.txt' format, ensuring it contains a variable representing an \( N \times D \) matrix (N instances, D feature).
+1. Prepare your dataset in `.mat` or `.txt` format, ensuring it contains a variable representing an \( N \times D \) matrix (N instances, D feature).
 
-. Place your dataset in the `Datasets/` directoy.
+2. Place your dataset in the `Datasets/` directoy.
 
-. Navigate to the `Algorithms/` directory in MATLB.
+3. Navigate to the `Algorithms/` directory in MATLB.
 
-. Run the main scrit:
+4. Run the main scrit:
    ```matlab
    main.m
    ```
 
 
-. Adjust parameters within the script as needed:
+5. Adjust parameters within the script as needed:
   - `num_samples`: Number of sample sets (default: 30)
   - `alpha`: Sampling proportion (default: \( 1/\sqrt{N} ))
   - `k`: Number of peak balls or desired clusters
@@ -69,8 +72,8 @@ Upon execution, results are stored in the `experiment_records/` directory, organ
 
 GBSK is designed for efficiency and scalabiity:
 
-- **Time Complexity**: O(n), significantly reduced compared to traditional clustering methods on large dataets
-- **Scalability**: Capable of handling datasets with millions of instances
+- **Time Complexity**: O(n), significantly reduced compared to traditional clustering methods on large dataets.
+- **Scalability**: Capable of handling datasets with millions of instances.
 - **Robustness**: Effective in the presence of noise and outliers due to multi-sampling and density-based techniues.
 
 ## 📄 Licnse
