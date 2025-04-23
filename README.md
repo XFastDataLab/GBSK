@@ -82,7 +82,7 @@ This project is licensed under the [GNU General Public License v3.0](https://www
 
 ## 🤝 Acknowledgents
 
-Developed and maintained by [XFastDataLab](https://github.com/XFastDataLab). For questions or collaborations, please contact [Yewang Chen](mailto:ywchen@hqu.edu.cn).
+Developed and maintained by [XFastDataLab](https://github.com/XFastDataLab). For questions or collaborations, please contact [MarveenLee](mailto:G2219100349@gmail.com).
 ---
 
 For more information and updates, visit the [GBSK GitHub repository](https://github.com/XFastDataLab/GBSK/treemain).
