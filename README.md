@@ -56,7 +56,7 @@ Traditional clustering methods often struggle with large and complex datasets du
 
 5. Adjust parameters within the script as needed:
   - `num_samples`: Number of sample sets (default: 30)
-  - `alpha`: Sampling proportion (default: \( 1/sqrt{N} ))
+  - `alpha`: Sampling proportion (default: \( $\frac{1}{\sqrt{n}}$ ))
   - `k`: Number of peak balls or desired clusters
   - `target_ball_count`: Target number of balls per sample set (default: \( 10 \times k ))
 
