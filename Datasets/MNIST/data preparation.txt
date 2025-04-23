@@ -1,0 +1,4 @@
+Data from Kaggle.
+data concatenated with train and test. 60000+10000
+data 70000*784 ranging from [0,255]
+labels 70000*1 10 classes ranging from [0,255]
