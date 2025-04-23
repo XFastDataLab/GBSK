@@ -22,13 +22,13 @@ try
         % define manually sampling proportion
         sample_size = round(alpha * n_points); % sample size of a sampled set
         % Generate dynamic folder name
-        results_dir = sprintf('D:/experiment_outcomes/GBSK/%s/Seed_%d s_%d a_%.4f M_%d', dataset_name, seedData.Seed, num_samples, alpha, target_ball_count);
+        results_dir = sprintf('D:/GBSK/experiment_outcomes/GBSK/%s/Seed_%d s_%d a_%.4f M_%d', dataset_name, seedData.Seed, num_samples, alpha, target_ball_count);
     else
         % default setting: square root sampling
         alpha = 1 / sqrt(n_points);
         sample_size = round(sqrt(n_points)); % sample size of a sampled set
         % Generate dynamic folder name
-        results_dir = sprintf('D:/experiment_outcomes/GBSK/%s/Seed_%d s_%d a_sqrt M_%d', dataset_name, seedData.Seed, num_samples, target_ball_count);
+        results_dir = sprintf('D:/GBSK/experiment_outcomes/GBSK/%s/Seed_%d s_%d a_sqrt M_%d', dataset_name, seedData.Seed, num_samples, target_ball_count);
     end
 
     % Create directories if they do not exist
