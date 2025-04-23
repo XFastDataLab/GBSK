@@ -29,13 +29,13 @@ Traditional clustering methods often struggle with large and complex datasets du
 . Clone the repositoy:
    ```bash
    git clone https://github.com/XFastDataLab/GBSK.git
-   ``
+   ```
 
 
 . Add the `Algorithms/` directory to your MATLAB pah:
    ```matlab
    addpath(genpath('path_to_GBSK/Algorithms'));
-   ``
+   ```
 
 
 ## ⚙️ Usage
@@ -49,7 +49,7 @@ Traditional clustering methods often struggle with large and complex datasets du
 . Run the main scrit:
    ```matlab
    main_GBSK.m
-   ``
+   ```
 
 
 . Adjust parameters within the script as needd:
