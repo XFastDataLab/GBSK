@@ -34,7 +34,7 @@ Traditional clustering methods often struggle with large and complex datasets du
    ```
 
 
-2. Add the `Algorithms/` directory to your MATLAB pah:
+2. Add the `Algorithms/` directory to your MATLAB path:
    ```matlab
    addpath(genpath('path_to_GBSK/Algorithms'));
    ```
