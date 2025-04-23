@@ -48,11 +48,7 @@ Traditional clustering methods often struggle with large and complex datasets du
 
 3. Navigate to the `Algorithms/` directory in MATLB.
 
-4. Run the main scrit:
-   ```matlab
-   main.m
-   ```
-
+4. Run the main scrit: `main.m` for a dataset that does not exceed memory. Otherwise, edit and run `main_big.m`. 
 
 5. Adjust parameters within the script as needed:
   - `num_samples`: Number of sample sets (default: 30)
