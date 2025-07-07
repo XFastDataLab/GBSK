@@ -7,8 +7,8 @@
 
 **Granular-ball Skeleton Clustering (GBSK)** is a scalable clustering algorithm designed for large-scale, complex data. By constructing multi-grained granular-balls from sampled data, it approximates the underlying structure of data as a compact "skeleton," reducing computation while maintaining accuracy. With linear time complexity (O(n)), GBSK handles massive datasets—up to 100M points in 256 dimension. The adaptive variant, AGBSK, simplifies parameter tuning for ease of use.
 
-![e.g. SYN2](assets/SYN2 e.g..png)
-![e.g. ChainLink](assets/ChainLink e.g..png)
+![e.g. SYN2](assets/SYN2.png)
+![e.g. ChainLink](assets/ChainLink.png)
 
 <!--
 ## 🔍 Overview
@@ -99,7 +99,7 @@ GBSK has been tested on diverse synthetic and real-world datasets:
 
 | Dataset       | Instances | Dims | Classes | Type | Size  | Usage | Label | Description |
 |--------------|----------:|-----:|--------:|-----:|------:|------:|------:|-------------|
-| [**Chainlink**](https://github.com/milaan9/Clustering-Datasets/blob/master/02.%20Synthetic/chainlink.csv)) | 1,000 | 3 | 2 | S | 20KB | Q | Y | Two interlocking 3D rings |
+| [**Chainlink**](https://github.com/milaan9/Clustering-Datasets/blob/master/02.%20Synthetic/chainlink.csv) | 1,000 | 3 | 2 | S | 20KB | Q | Y | Two interlocking 3D rings |
 | [**Twenty**](https://github.com/milaan9/Clustering-Datasets/blob/master/02.%20Synthetic/twenty.mat) | 1,000 | 2 | 20 | S | 17KB | Q | Y | 20 evenly distributed clusters |
 | **SYN1** | 2,000 | 2 | 5 | S | 30KB | Q | Y | Varying cluster densities |
 | [**Segmentation**](https://doi.org/10.24432/C5P01G) | 2,310 | 18 | 7 | R | 246KB | Q | Y | Image segmentation data |
