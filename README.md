@@ -74,8 +74,8 @@ Run `demo/demo1.m` or `demo/demo2.m`. Run `demo/ClusteringQualityEvaluation.py` 
 
 5. Adjust parameters within the script as needed:
   - `s`: Number of sample sets (default: 30)
-  - `$\alpha$`: Sampling proportion (default: $\frac{1}{\sqrt{n}}$ )
-  - `k`: Number of desired clusters or root key balls representing cluster centers (a parameter must be inputted mannually)
+  - `alpha`: Sampling proportion (default: $\frac{1}{\sqrt{n}}$ )
+  - `k`: Number of desired clusters or root key balls representing cluster centers (Must be manually selected)
   - `M`: Number of balls per sample set (default: $10 \times k$ )
 
 ## 📊 Output
