@@ -54,9 +54,9 @@ GBSK is currently implemented in [MATLAB](https://www.mathworks.com/products/mat
    git clone https://github.com/XFastDataLab/GBSK.git
    ```
 
-2. Add the `algorithms/` directory to your MATLAB path:
+2. Add the `GBSK/` directory of the repository to your MATLAB path:
    ```matlab
-   addpath(genpath('path_to_GBSK/algorithms'));
+   addpath(genpath('path_to_GBSK'));
    ```
 
 ### Demo
