@@ -1,11 +1,11 @@
-# GBSK: Skeleton Clustering via Granular-Ball Computing and Multi-Sampling for Large-Scale Complex Data
+# GBSK: Skeleton Clustering via Granular-Ball Computing and Multi-Sampling for Large-Scale Data
 [Yewang Chen](https://faculty.hqu.edu.cn/CYW1), [Junfeng Li](https://github.com/MarveenLee), [Shuyin Xia](https://orcid.org/0000-0001-5993-9563), [Qinghong Lai](https://orcid.org/0009-0003-0712-9229), [Xinbo Gao](https://see.xidian.edu.cn/faculty/xbgao/), [Guoyin Wang](https://orcid.org/0000-0002-8521-5232), [Dongdong Cheng](https://orcid.org/0000-0003-3500-5461), [Yi Liu](https://orcid.org/0009-0008-9668-7076), [Yi Wang](https://orcid.org/0000-0002-9013-7232)
 
 <!-- [[`Paper`]()] -->
 [[`Demo`](https://github.com/XFastDataLab/GBSK?tab=readme-ov-file#-getting-started)] [[`Datasets`](https://github.com/XFastDataLab/GBSK?tab=readme-ov-file#-datasets)]
 <!-- [[`BibTex`](#citing-GBSK)] -->
 
-**Granular-ball Skeleton Clustering (GBSK)** is a scalable clustering algorithm designed for large-scale, complex data. By constructing multi-grained granular-balls from sampled data, it approximates the underlying structure of data as a compact "skeleton," reducing computation while maintaining accuracy. With linear time complexity (O(n)), GBSK handles massive datasets—up to 100M points in 256 dimension. The adaptive variant, AGBSK, simplifies parameter tuning for ease of use.
+**Granular-ball Skeleton Clustering (GBSK)** is a scalable clustering algorithm designed for large-scale data. By constructing multi-grained granular-balls from sampled data, it approximates the underlying structure of data as a compact "skeleton," reducing computation while maintaining accuracy. With linear time complexity (O(n)), GBSK handles massive datasets—up to 100M points in 256 dimension. The adaptive variant, AGBSK, simplifies parameter tuning for ease of use.
 
 ![e.g. SYN2](assets/SYN2.png)
 ![e.g. ChainLink](assets/ChainLink.png)
@@ -139,7 +139,7 @@ Cite our work if you use GBSK or the AGC100M dataset!
 If you use GBSK or the AGC100M dataset in your research, please use the following BibTeX entry.
 ```bibtex
 @article{chen2025GBSK,
-  title={GBSK: Skeleton Clustering via Granular-Ball Computing and Multi-Sampling for Large-Scale Complex Data},
+  title={GBSK: Skeleton Clustering via Granular-Ball Computing and Multi-Sampling for Large-Scale Data},
   author={Yewang Chen and Junfeng Li and Shuyin Xia and Qinghong Lai and Xinbo Gao and Guoyin Wang and Dongdong Cheng and Yi Liu and Yi Wang},
   journal={arXiv preprint arXiv:},
   url={https://arxiv.org/abs/},
