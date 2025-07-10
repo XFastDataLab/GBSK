@@ -64,7 +64,8 @@ Run `demo/demo1.m` or `demo/demo2.m`. Run `demo/ClusteringQualityEvaluation.py` 
 
 ## ⚙️ Usage
 
-1. Prepare your dataset in `.mat` or `.txt` format, ensuring it contains a variable representing an $N \times D$ matrix (N instances, D feature).
+# Basic Workflow
+1. Prepare your dataset in `.mat` or `.txt` format, ensuring it contains a variable representing an $n \times d$ matrix (n instances, d feature).
 
 2. Place your dataset in the `datasets/` directoy.
 
@@ -72,11 +73,23 @@ Run `demo/demo1.m` or `demo/demo2.m`. Run `demo/ClusteringQualityEvaluation.py` 
 
 4. Run the main scrit: `main.m` for a dataset that does not exceed memory. Otherwise, edit and run `main_big.m`. 
 
-5. Adjust parameters within the script as needed:
-  - `s`: Number of sample sets (default: 30)
-  - `alpha`: Sampling proportion (default: $\frac{1}{\sqrt{n}}$ )
-  - `k`: Number of desired clusters or root key balls representing cluster centers (Must be manually selected)
-  - `M`: Number of balls per sample set (default: $10 \times k$ )
+# AGBSK: Recommended Configuration
+AGBSK works well with default parameters, requiring only the cluster number k as input:
+| Parameter | Description | Default Value |
+|-----------|------------:|---------------|
+| k |	Number of clusters (root key balls representing centers) |	User-specified |
+| s	| Number of sample sets |	30 |
+| alpha |	Sampling proportion	| $\frac{1}{\sqrt{n}}$ |
+| M |	Number of balls per sample set |	$10 \times k$ |
+
+# GBSK: Advanced Configuration
+For expert users, GBSK offers four adjustable parameters with empirically validated ranges:
+| Parameter | Recommended Range | Notes |
+|-----------|------------:|---------------|
+| s	| 10-30 |	Number of sample sets |
+| alpha |	Dataset-dependent (e.g. 0.01)	| Ensure sufficient sampling coverage |
+| k |	Based on prior knowledge	 |	Number of target clusters |
+| M |	k < M <= n | Number of balls per sample set |
 
 ## 📊 Output
 
