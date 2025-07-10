@@ -2,7 +2,7 @@
 """
 Created on 16 Apr 2025
 
-@author: Junfeng Li, Qinghong Lai
+@author: Junfeng Li (https://github.com/MarveenLee), Qinghong Lai
 """
 
 import numpy as np

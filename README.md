@@ -94,6 +94,8 @@ GBSK is designed for efficiency and scalabiity:
 - **Scalability**: Capable of handling datasets with millions of instances.
 - **Robustness**: Effective in the presence of noise and outliers due to multi-sampling and density-based techniques.
 
+![Time scaling comparison of algorithms](assets/line_time_comp.png)
+
 ## 📁 Datasets
 GBSK has been tested on diverse synthetic and real-world datasets:
 

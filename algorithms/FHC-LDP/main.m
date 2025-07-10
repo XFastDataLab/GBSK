@@ -9,10 +9,10 @@ clear all;close all;clc;
 % load dataset/jain
 % data = jain;
 data = importdata('dataset/covertype.txt');
-%data = importdata('L:\experiment\合成聚类数据集\N-BaIoT Dataset\sample data\4W.txt');
-%data = importdata('L:\experiment\合成聚类数据集\3M2D5\data.txt');
+%data = importdata('L:\N-BaIoT Dataset\sample data\4W.txt');
+%data = importdata('L:\3M2D5\data.txt');
 %data = importdata('data/covertype_data.txt');
-%data = importdata('L:\experiment\合成聚类数据集\train.csv\PCA_data.txt');  
+%data = importdata('L:\train.csv\PCA_data.txt');  
 %answer = data(:,end);  % 标签
 %answer = importdata('dataset/pendigits_labels.txt');
 tic
@@ -22,7 +22,7 @@ k = 5;
 C = 7;
 %% FHC_LPD clustering
 [cl] = FHC_LPD(data,k,C);
-%dlmwrite('L:\experiment\合成聚类数据集\train.csv\labels_by_FHCLDP.txt', cl');
+%dlmwrite('L:\train.csv\labels_by_FHCLDP.txt', cl');
 toc
 dlmwrite('labels/labels_by_FHCLDP.txt', cl');
 
