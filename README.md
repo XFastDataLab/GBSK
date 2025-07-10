@@ -64,7 +64,7 @@ Run `demo/demo1.m` or `demo/demo2.m`. Run `demo/ClusteringQualityEvaluation.py` 
 
 ## ⚙️ Usage
 
-# Basic Workflow
+### Basic Workflow
 1. Prepare your dataset in `.mat` or `.txt` format, ensuring it contains a variable representing an $n \times d$ matrix (n instances, d feature).
 
 2. Place your dataset in the `datasets/` directoy.
@@ -73,7 +73,7 @@ Run `demo/demo1.m` or `demo/demo2.m`. Run `demo/ClusteringQualityEvaluation.py` 
 
 4. Run the main scrit: `main.m` for a dataset that does not exceed memory. Otherwise, edit and run `main_big.m`. 
 
-# AGBSK: Recommended Configuration
+### AGBSK: Recommended Configuration
 AGBSK works well with default parameters, requiring only the cluster number k as input:
 | Parameter | Description | Default Value |
 |-----------|------------:|---------------|
@@ -82,7 +82,7 @@ AGBSK works well with default parameters, requiring only the cluster number k as
 | alpha |	Sampling proportion	| $\frac{1}{\sqrt{n}}$ |
 | M |	Number of balls per sample set |	$10 \times k$ |
 
-# GBSK: Advanced Configuration
+### GBSK: Advanced Configuration
 For expert users, GBSK offers four adjustable parameters with empirically validated ranges:
 | Parameter | Recommended Range | Notes |
 |-----------|------------:|---------------|
