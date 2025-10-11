@@ -1,7 +1,7 @@
 # GBSK: Skeleton Clustering via Granular-Ball Computing and Multi-Sampling for Large-Scale Data
 [Yewang Chen](https://faculty.hqu.edu.cn/CYW1), [Junfeng Li](https://github.com/MarveenLee), [Shuyin Xia](https://orcid.org/0000-0001-5993-9563), [Qinghong Lai](https://orcid.org/0009-0003-0712-9229), [Xinbo Gao](https://see.xidian.edu.cn/faculty/xbgao/), [Guoyin Wang](https://orcid.org/0000-0002-8521-5232), [Dongdong Cheng](https://orcid.org/0000-0003-3500-5461), [Yi Liu](https://orcid.org/0009-0008-9668-7076), [Yi Wang](https://orcid.org/0000-0002-9013-7232)
 
-[[`Paper`](arxiv.org/abs/2509.23742)]
+[[`Paper`](https://arxiv.org/abs/2509.23742)]
 [[`Demo`](https://github.com/XFastDataLab/GBSK?tab=readme-ov-file#-getting-started)] [[`Datasets`](https://github.com/XFastDataLab/GBSK?tab=readme-ov-file#-datasets)]
 <!-- [[`BibTex`](#citing-GBSK)] -->
 
@@ -165,4 +165,5 @@ If you use GBSK or the AGC100M dataset in your research, please use the followin
 For more information and updates, visit the [GBSK GitHub repository](https://github.com/XFastDataLab/GBSK/treemain).
 
 --- 
+
 
