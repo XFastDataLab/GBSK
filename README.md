@@ -15,7 +15,7 @@
   <a href="https://github.com/XFastDataLab/GBSK#-datasets">
     <img src="https://img.shields.io/badge/📦-Datasets-green?logo=github&logoColor=white" alt="Datasets">
   </a>
-  <a href="https://github.com/XFastDataLab/GBSK#citing-gbsk">
+  <a href="https://github.com/XFastDataLab/GBSK#-citing-gbsk">
     <img src="https://img.shields.io/badge/📑-BibTeX-lightgrey?logo=latex&logoColor=white" alt="BibTeX">
   </a>
 </p>
@@ -26,7 +26,7 @@
 [[`Paper`](https://arxiv.org/abs/2509.23742)]
 [[`Demo`](https://github.com/XFastDataLab/GBSK?tab=readme-ov-file#-getting-started)]
 [[`Datasets`](https://github.com/XFastDataLab/GBSK?tab=readme-ov-file#-datasets)]
-[[`BibTex`](#citing-GBSK)]
+[[`BibTex`](#-citing-GBSK)]
 -->
 
 **Granular-ball Skeleton Clustering (GBSK)** is a scalable clustering algorithm designed for large-scale data. By constructing multi-grained granular-balls from sampled data, it approximates the underlying structure of data as a compact "skeleton," reducing computation while maintaining accuracy. With linear time complexity (O(n)), GBSK handles massive datasets—up to 100M points in 256 dimension. The adaptive variant, AGBSK, simplifies parameter tuning for ease of use.
@@ -202,6 +202,7 @@ If you use GBSK or the AGC100M dataset in your research, please use the followin
 For more information and updates, visit the [GBSK GitHub repository](https://github.com/XFastDataLab/GBSK/treemain).
 
 --- 
+
 
 
 
