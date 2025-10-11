@@ -1,9 +1,33 @@
-# GBSK: Skeleton Clustering via Granular-Ball Computing and Multi-Sampling for Large-Scale Data
+<!--# GBSK: Skeleton Clustering via Granular-Ball Computing and Multi-Sampling for Large-Scale Data-->
+<h1 align="center">
+  GBSK: Skeleton Clustering via<br>
+  Granular-Ball Computing and Multi-Sampling<br>
+  for Large-Scale Data
+</h1>
+
+<p align="center">
+  <a href="https://arxiv.org/abs/2509.23742">
+    <img src="https://img.shields.io/badge/arXiv-2509.23742-red?logo=arxiv&logoColor=white" alt="arXiv">
+  </a>
+  <a href="https://github.com/XFastDataLab/GBSK#-getting-started">
+    <img src="https://img.shields.io/badge/🤖-Live_Demo-blue?logo=github&logoColor=white" alt="Demo">
+  </a>
+  <a href="https://github.com/XFastDataLab/GBSK#-datasets">
+    <img src="https://img.shields.io/badge/📦-Datasets-green?logo=github&logoColor=white" alt="Datasets">
+  </a>
+  <a href="#citing-gbsk">
+    <img src="https://img.shields.io/badge/📑-BibTeX-lightgrey?logo=latex&logoColor=white" alt="BibTeX">
+  </a>
+</p>
+
 [Yewang Chen](https://faculty.hqu.edu.cn/CYW1), [Junfeng Li](https://github.com/MarveenLee), [Shuyin Xia](https://orcid.org/0000-0001-5993-9563), [Qinghong Lai](https://orcid.org/0009-0003-0712-9229), [Xinbo Gao](https://see.xidian.edu.cn/faculty/xbgao/), [Guoyin Wang](https://orcid.org/0000-0002-8521-5232), [Dongdong Cheng](https://orcid.org/0000-0003-3500-5461), [Yi Liu](https://orcid.org/0009-0008-9668-7076), [Yi Wang](https://orcid.org/0000-0002-9013-7232)
 
+<!--
 [[`Paper`](https://arxiv.org/abs/2509.23742)]
-[[`Demo`](https://github.com/XFastDataLab/GBSK?tab=readme-ov-file#-getting-started)] [[`Datasets`](https://github.com/XFastDataLab/GBSK?tab=readme-ov-file#-datasets)]
-<!-- [[`BibTex`](#citing-GBSK)] -->
+[[`Demo`](https://github.com/XFastDataLab/GBSK?tab=readme-ov-file#-getting-started)]
+[[`Datasets`](https://github.com/XFastDataLab/GBSK?tab=readme-ov-file#-datasets)]
+[[`BibTex`](#citing-GBSK)]
+-->
 
 **Granular-ball Skeleton Clustering (GBSK)** is a scalable clustering algorithm designed for large-scale data. By constructing multi-grained granular-balls from sampled data, it approximates the underlying structure of data as a compact "skeleton," reducing computation while maintaining accuracy. With linear time complexity (O(n)), GBSK handles massive datasets—up to 100M points in 256 dimension. The adaptive variant, AGBSK, simplifies parameter tuning for ease of use.
 
@@ -155,15 +179,28 @@ If you use GBSK or the AGC100M dataset in your research, please use the followin
   title={GBSK: Skeleton Clustering via Granular-Ball Computing and Multi-Sampling for Large-Scale Data},
   author={Yewang Chen and Junfeng Li and Shuyin Xia and Qinghong Lai and Xinbo Gao and Guoyin Wang and Dongdong Cheng and Yi Liu and Yi Wang},
   journal={arXiv preprint arXiv:},
-  url={https://arxiv.org/abs/},
+  url={https://arxiv.org/abs/2509.23742},
   year={2025}
 }
-```
 -->
+
+```bibtex
+@article{chen2025GBSK,
+  title={GBSK: Skeleton Clustering via Granular-Ball Computing and Multi-Sampling for Large-Scale Data},
+  author={Yewang Chen and Junfeng Li and Shuyin Xia and Qinghong Lai and Xinbo Gao and Guoyin Wang and Dongdong Cheng and Yi Liu and Yi Wang},
+  year={2025},
+  eprint={2509.23742},
+  archivePrefix={arXiv},
+  primaryClass={cs.LG}
+}
+
+
+
 ---
 
 For more information and updates, visit the [GBSK GitHub repository](https://github.com/XFastDataLab/GBSK/treemain).
 
 --- 
+
 
 
