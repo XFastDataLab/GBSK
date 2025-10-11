@@ -15,7 +15,7 @@
   <a href="https://github.com/XFastDataLab/GBSK#-datasets">
     <img src="https://img.shields.io/badge/📦-Datasets-green?logo=github&logoColor=white" alt="Datasets">
   </a>
-  <a href="#citing-gbsk">
+  <a href="#citing-GBSK">
     <img src="https://img.shields.io/badge/📑-BibTeX-lightgrey?logo=latex&logoColor=white" alt="BibTeX">
   </a>
 </p>
@@ -201,6 +201,7 @@ If you use GBSK or the AGC100M dataset in your research, please use the followin
 For more information and updates, visit the [GBSK GitHub repository](https://github.com/XFastDataLab/GBSK/treemain).
 
 --- 
+
 
 
 
