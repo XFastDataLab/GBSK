@@ -155,7 +155,7 @@ GBSK has been tested on diverse synthetic and real-world datasets:
 | [**CoverType**](https://doi.org/10.24432/C50K5N) | 581K | 54 | 7 | R | 71MB | Q,S | Y | Forest cover types |
 | **3M2D5** | 3M | 2 | 5 | S | 54MB | Q,S | Y | Large Gaussian mixtures |
 | [**N-BaIoT**](https://www.kaggle.com/datasets/mkashifn/nbaiot-dataset) | 7M | 115 | 9 | R | 7.6GB | S | N | IoT malware traffic |
-| [**MNIST8M**](https://www.csie.ntu.edu.tw/~cjlin/libsvmtools/datasets/multiclass.html#mnist8m) | 8.1M | 784 | 10 | R | 5.9GB | Q,S | Y | Augmented MNIST |
+| [**MNIST8M**](https://huggingface.co/datasets/MarveenLee/MNIST8M) | 8.1M | 784 | 10 | R | 5.9GB | Q,S | Y | [Infinite MNIST](https://www.csie.ntu.edu.tw/~cjlin/libsvmtools/datasets/multiclass.html#mnist8m) |
 | [**AGC100M**](https://www.kaggle.com/datasets/caatic7/agc100m) | 100M | 256 | 17 | S | 95GB | Q,S | Y | Ultra-large-scale benchmark |
 
 - **Type**: S = Synthetic, R = Real-world  
@@ -202,6 +202,7 @@ If you use GBSK or the AGC100M dataset in your research, please use the followin
 For more information and updates, visit the [GBSK GitHub repository](https://github.com/XFastDataLab/GBSK/treemain).
 
 --- 
+
 
 
 
