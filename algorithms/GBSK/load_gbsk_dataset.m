@@ -1,5 +1,6 @@
-﻿function [data, labelPath] = load_gbsk_dataset(repoRoot, datasetName)
+function [data, labelPath] = load_gbsk_dataset(repoRoot, datasetName)
     datasetsRoot = fullfile(repoRoot, 'datasets');
+    externalRoot = 'H:\Datasets';
     labelPath = '';
 
     if strcmpi(datasetName, 'Segmentation')
@@ -26,60 +27,13 @@
         searchTerms = {datasetName};
     end
 
-    selectedDataFile = '';
-    directDatasetDir = fullfile(datasetsRoot, datasetName);
-    preferredPatterns = {'data.mat', 'data.txt', [datasetName '_data.h5'], 'anisotropic_gaussian_clusters.bin'};
-    if exist(directDatasetDir, 'dir')
-        for i = 1:numel(preferredPatterns)
-            candidate = fullfile(directDatasetDir, preferredPatterns{i});
-            if exist(candidate, 'file')
-                selectedDataFile = candidate;
-                break;
-            end
-        end
-        if isempty(selectedDataFile)
-            listing = [dir(fullfile(directDatasetDir, '*.mat')); dir(fullfile(directDatasetDir, '*.txt')); dir(fullfile(directDatasetDir, '*.h5')); dir(fullfile(directDatasetDir, '*.bin'))];
-            for i = 1:numel(listing)
-                candidate = fullfile(listing(i).folder, listing(i).name);
-                if ~contains(lower(candidate), 'label')
-                    selectedDataFile = candidate;
-                    break;
-                end
-            end
-        end
+    selectedDataFile = find_dataset_file(datasetsRoot, datasetName, searchTerms);
+    if isempty(selectedDataFile) && exist(externalRoot, 'dir')
+        selectedDataFile = find_dataset_file(externalRoot, datasetName, searchTerms);
     end
 
     if isempty(selectedDataFile)
-        listing = [dir(fullfile(datasetsRoot, '**', '*.mat')); dir(fullfile(datasetsRoot, '**', '*.txt')); dir(fullfile(datasetsRoot, '**', '*.h5')); dir(fullfile(datasetsRoot, '**', '*.bin'))];
-        bestScore = -inf;
-        for i = 1:numel(listing)
-            candidate = fullfile(listing(i).folder, listing(i).name);
-            [~, baseName, ext] = fileparts(candidate);
-            lowerName = lower([baseName ext]);
-            if contains(lowerName, 'label')
-                continue;
-            end
-            score = 0;
-            for t = 1:numel(searchTerms)
-                if contains(lowerName, lower(searchTerms{t}))
-                    score = score + 10;
-                end
-            end
-            if strcmpi(baseName, datasetName)
-                score = score + 20;
-            end
-            if strcmpi(baseName, 'data')
-                score = score + 5;
-            end
-            if score > bestScore
-                bestScore = score;
-                selectedDataFile = candidate;
-            end
-        end
-    end
-
-    if isempty(selectedDataFile)
-        error('Dataset %s not found under %s.', datasetName, datasetsRoot);
+        error('Dataset %s not found under %s or %s.', datasetName, datasetsRoot, externalRoot);
     end
 
     [~, ~, ext] = fileparts(selectedDataFile);
@@ -103,17 +57,81 @@
             error('Unsupported dataset format: %s', selectedDataFile);
     end
 
-    labelCandidates = [];
-    if exist(directDatasetDir, 'dir')
-        labelCandidates = [labelCandidates; dir(fullfile(directDatasetDir, 'labels.txt')); dir(fullfile(directDatasetDir, 'label.txt')); dir(fullfile(directDatasetDir, 'groundtruth.txt'))]; %#ok<AGROW>
+    selectedLabelFile = find_label_file(fileparts(selectedDataFile), datasetsRoot, externalRoot, datasetName, searchTerms);
+    if ~isempty(selectedLabelFile)
+        labelPath = selectedLabelFile;
     end
-    labelCandidates = [labelCandidates; dir(fullfile(datasetsRoot, '**', 'labels.txt')); dir(fullfile(datasetsRoot, '**', 'label.txt')); dir(fullfile(datasetsRoot, '**', 'groundtruth.txt'))]; %#ok<AGROW>
+end
+
+function selectedFile = find_dataset_file(searchRoot, datasetName, searchTerms)
+    selectedFile = '';
+    directDatasetDir = fullfile(searchRoot, datasetName);
+    preferredPatterns = {'data.mat', 'data.txt', [datasetName '_data.h5'], 'anisotropic_gaussian_clusters.bin', [datasetName '.mat'], [datasetName '.txt']};
+
+    if exist(directDatasetDir, 'dir')
+        for i = 1:numel(preferredPatterns)
+            candidate = fullfile(directDatasetDir, preferredPatterns{i});
+            if exist(candidate, 'file')
+                selectedFile = candidate;
+                return;
+            end
+        end
+        listing = [dir(fullfile(directDatasetDir, '*.mat')); dir(fullfile(directDatasetDir, '*.txt')); dir(fullfile(directDatasetDir, '*.h5')); dir(fullfile(directDatasetDir, '*.bin'))];
+        for i = 1:numel(listing)
+            candidate = fullfile(listing(i).folder, listing(i).name);
+            if ~contains(lower(candidate), 'label')
+                selectedFile = candidate;
+                return;
+            end
+        end
+    end
+
+    listing = [dir(fullfile(searchRoot, '**', '*.mat')); dir(fullfile(searchRoot, '**', '*.txt')); dir(fullfile(searchRoot, '**', '*.h5')); dir(fullfile(searchRoot, '**', '*.bin'))];
+    bestScore = -inf;
+    for i = 1:numel(listing)
+        candidate = fullfile(listing(i).folder, listing(i).name);
+        [~, baseName, ext] = fileparts(candidate);
+        lowerName = lower([baseName ext]);
+        if contains(lowerName, 'label')
+            continue;
+        end
+        score = 0;
+        for t = 1:numel(searchTerms)
+            if contains(lowerName, lower(searchTerms{t}))
+                score = score + 10;
+            end
+        end
+        if strcmpi(baseName, datasetName)
+            score = score + 20;
+        end
+        if strcmpi(baseName, 'data')
+            score = score + 5;
+        end
+        if score > bestScore
+            bestScore = score;
+            selectedFile = candidate;
+        end
+    end
+end
+
+function selectedLabelFile = find_label_file(preferredDir, datasetsRoot, externalRoot, datasetName, searchTerms)
+    selectedLabelFile = '';
+    labelCandidates = [];
+    if exist(preferredDir, 'dir')
+        labelCandidates = [labelCandidates; dir(fullfile(preferredDir, 'labels.txt')); dir(fullfile(preferredDir, 'label.txt')); dir(fullfile(preferredDir, 'groundtruth.txt'))]; %#ok<AGROW>
+    end
+    if exist(datasetsRoot, 'dir')
+        labelCandidates = [labelCandidates; dir(fullfile(datasetsRoot, '**', 'labels.txt')); dir(fullfile(datasetsRoot, '**', 'label.txt')); dir(fullfile(datasetsRoot, '**', 'groundtruth.txt'))]; %#ok<AGROW>
+    end
+    if exist(externalRoot, 'dir')
+        labelCandidates = [labelCandidates; dir(fullfile(externalRoot, '**', 'labels.txt')); dir(fullfile(externalRoot, '**', 'label.txt')); dir(fullfile(externalRoot, '**', 'groundtruth.txt'))]; %#ok<AGROW>
+    end
     for i = 1:numel(labelCandidates)
         candidate = fullfile(labelCandidates(i).folder, labelCandidates(i).name);
         lowerCandidate = lower(candidate);
         if contains(lowerCandidate, lower(datasetName)) || any(cellfun(@(t) contains(lowerCandidate, lower(t)), searchTerms))
-            labelPath = candidate;
-            break;
+            selectedLabelFile = candidate;
+            return;
         end
     end
 end

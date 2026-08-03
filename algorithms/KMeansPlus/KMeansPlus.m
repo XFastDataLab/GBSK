@@ -1,8 +1,8 @@
-﻿clear; clc;
+clear; clc;
 
 scriptDir = fileparts(mfilename('fullpath'));
 repoRoot = fileparts(fileparts(scriptDir));
-addpath(genpath(fullfile(repoRoot, 'GBSK')));
+addpath(genpath(fullfile(repoRoot, 'algorithms', 'GBSK')));
 
 try
     dataset_name = 'Pendigits';
