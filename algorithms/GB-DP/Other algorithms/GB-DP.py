@@ -7,6 +7,7 @@
 # 2023
 
 import time
+from pathlib import Path
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -241,15 +242,14 @@ if __name__ == "__main__":
 
     np.set_printoptions(threshold=1e16)
 
-    # data_mat = np.loadtxt('./data/TB.txt')
-
-    data_mat = scipy.io.loadmat('./data/data_TB_1048576.mat')
+    repo_root = Path(__file__).resolve().parents[3]
+    data_mat = scipy.io.loadmat(repo_root / 'datasets' / 'N-BaIoT' / 'whole_data.mat')
 
     # print(data_mat.keys())
     # print(data_mat['gt'])
     data_mat = data_mat['fea'][0:500000]
 
-    np.savetxt("./data/TB.txt", data_mat)
+    np.savetxt(repo_root / 'datasets' / 'N-BaIoT' / 'TB.txt', data_mat)
 
     #开始时间
     start = time.time()

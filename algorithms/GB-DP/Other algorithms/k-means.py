@@ -1,4 +1,5 @@
 import time
+from pathlib import Path
 
 import matplotlib.pyplot as plt
 import numpy as np
@@ -27,10 +28,11 @@ dic_colors = {0: (.8, 0, 0), 1: (0, .8, 0),
               }
 
 np.set_printoptions(threshold=1e6)
+
 def best_map(L1, L2):
     """L1 should be the labels and L2 should be the clustering number we got"""
-    Label1 = np.unique(L1)  # 去除重复的元素，由小大大排列
-    nClass1 = len(Label1)  # 标签的大小
+    Label1 = np.unique(L1)
+    nClass1 = len(Label1)
     Label2 = np.unique(L2)
     nClass2 = len(Label2)
     nClass = np.maximum(nClass1, nClass2)
@@ -65,14 +67,11 @@ def draw_cluster(datas, labs, dic_colors):
         sub_index = np.where(labs == k)
         sub_datas = datas[sub_index]
         plt.scatter(sub_datas[:, 0], sub_datas[:, 1], s=16., color=dic_colors[k])
-    # sub_halos_index = np.where(labs == -1)
-    # sub_halos_datas = datas[sub_halos_index]
-    # plt.scatter(sub_halos_datas[:, 0], sub_halos_datas[:, 1],  s=16.,  c='k')
-    # plt.savefig("6.svg", dpi=600)
     plt.show()
     val2_end = time.time()
     val2 = (val2_end - val2_start)
     return val2
+
 dic_colors = {0: (.8, 0, 0), 1: (0, .8, 0),
                   2: (0, 0, .8), 3: (.8, .8, 0),
                   4: (.8, 0, .8), 5: (0, .8, .8),
@@ -81,23 +80,19 @@ dic_colors = {0: (.8, 0, 0), 1: (0, .8, 0),
 
 
 cl = 5
-lines = np.loadtxt("./data/Aggregation.txt")
+repo_root = Path(__file__).resolve().parents[3]
+lines = np.loadtxt(repo_root / 'datasets' / 'Aggregation' / 'data.txt')
 start1 = time.time()
 label1 = k_means(X=lines, n_clusters=5, n_init=1, random_state=10)[1]
 end1 = time.time()
 times = end1 - start1
-print('running time ：%s s ' % (times))
-# label1 = best_map(line_target,label)
+print('running time ??s s ' % (times))
 
 draw_cluster(lines, label1, dic_colors)
-# np.savetxt("../data/人工数据集2/data/large_label.txt", label)
 err_rate1 = err_rate(line_target, label1)
-# print("error:", err_rate1)
 get_matchlabel = best_map(line_target, label1)
-# # print(get_matchlabel)
 result_ACC = accuracy_score(line_target, get_matchlabel)
 result_NMI = metrics.normalized_mutual_info_score(line_target, get_matchlabel)
 
-
-print('算法的ACC准确率为：', result_ACC)
-print('算法的NMI准确率为：', result_NMI)
+print('?????CC????????, result_ACC)
+print('?????MI????????, result_NMI)

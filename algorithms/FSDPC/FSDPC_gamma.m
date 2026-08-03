@@ -1,11 +1,17 @@
-clear
+﻿clear
 clc
 
-%t1=cputime;
+scriptDir = fileparts(mfilename('fullpath'));
+repoRoot = fileparts(fileparts(scriptDir));
+addpath(genpath(repoRoot));
 
 
-%data=xlsread('spiral.xlsx');
-data = importdata('dataset/ConfLong.txt');
+dataFile = fullfile(repoRoot, 'datasets', 'ConfLong.txt');
+if exist(dataFile, 'file')
+    data = importdata(dataFile);
+else
+    error('Dataset not found: %s', dataFile);
+end
 
 tic
 ND=size(data,1);
@@ -15,14 +21,13 @@ K=11;
 sim=zeros(ND);
 sim(:,:)=inf;
 
-a=-1*ones(1,3);    % 第二个参数是维度
+a=-1*ones(1,3);
 for i=1:ND
     b(i)=norm(data(i,:)-a);
 end
 [m,n]=sort(b);
 
 xun=round(0.4*ND);
-
 
 for i=1:xun-1
     for j=i+1:xun
@@ -43,7 +48,6 @@ position=round(N*percent/100);
 sda=sort((sim(triu(true(size(sim)),1)))');
 dc=sda(position);
 
-
 for i=1:(ND-xun+1)
     cc=0;
     for j=i+xun:ND
@@ -58,9 +62,6 @@ for i=1:(ND-xun+1)
 end
 
 sim(logical(eye(ND)))=0;
-
-%e1=cputime-t1;
-
 
 t2=cputime;
 
@@ -99,90 +100,8 @@ for i=1:ND
     gamma(i)=rho(i)*delta(i);
 end
 
-[gamma_sorted,ordgamma]= sort(gamma,'descend');  %将gamma从大到小排列，并输出其对应元素的索引
-
-% figure(1);
-% tt=plot(rho(:),delta(:),'o','MarkerSize',5,'MarkerFaceColor','k','MarkerEdgeColor','k');
-% title ('Decision Graph','FontSize',15.0)
-% xlabel ('\rho')
-% ylabel ('\delta')
-% 
-% 
-% rect = getrect(1);
-% rhomin=rect(1);
-% deltamin=rect(2);
-
-t3=cputime;
-
+[gamma_sorted,ordgamma]= sort(gamma,'descend');
 NCLUST=0;
 for i=1:ND
     cl(i)=-1;
 end
-
-%在矩形区域内统计数据点（即聚类中心）的个数
-for i=1:ND
-    %   if ( (rho(i)>rhomin) && (delta(i)>deltamin))
-    if(rho(i)*delta(i)>=gamma_sorted(K))      %选择rho与delta乘积较大的点作为聚类中心，这里取prek个，即生成prek个簇
-        NCLUST=NCLUST+1;
-        cl(i)=NCLUST; % 第 i 号数据点属于第 NCLUST 个 cluster
-        icl(NCLUST)=i; % 逆映射,第 NCLUST 个 cluster 的中心为第 i 号数据点
-    end
-end
-
-
-
-for i=1:ND
-    if (cl(ordrho(i))==-1)
-        cl(ordrho(i))=cl(nneigh(ordrho(i)));
-    end
-end
-dlmwrite('labels/ConfLong.txt', cl');
-toc 
-
-e3=cputime-t3;
-
-
-% for i=1:ND
-%     halo(i)=cl(i);
-% end
-% 
-% 
-% cmap=colormap;
-% for i=1:NCLUST
-%     ic=int8((i*64.)/(NCLUST*1.));
-%     figure(1);
-%     hold on
-%     plot(rho(icl(i)),delta(icl(i)),'o','MarkerSize',8,'MarkerFaceColor',cmap(ic,:),'MarkerEdgeColor',cmap(ic,:));
-% end
-% 
-% 
-% figure(2);
-% plot(data(:,1),data(:,2),'o','MarkerSize',2,'MarkerFaceColor','k','MarkerEdgeColor','k');
-% title ('FSDPC','FontSize',20.0)
-% 
-% 
-% for i=1:ND
-%     A(i,1)=0.;
-%     A(i,2)=0.;
-% end
-% for i=1:NCLUST
-%     nn=0;
-%     ic=int8((i*64.)/(NCLUST*1.));
-%     for j=1:ND
-%         if (halo(j)==i)
-%             nn=nn+1;
-%             A(nn,1)=data(j,1);
-%             A(nn,2)=data(j,2);
-%         end
-%     end
-%     hold on
-%     plot(A(1:nn,1),A(1:nn,2),'o','MarkerSize',2,'MarkerFaceColor',cmap(ic,:),'MarkerEdgeColor',cmap(ic,:));
-%     
-% end
-% 
-% 
-% 
-% (size(find(sim~=inf),1)-ND)/2
-
-%e1
-%tt=e1+e2+e3

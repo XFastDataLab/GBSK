@@ -1,4 +1,5 @@
 import time
+from pathlib import Path
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
@@ -182,7 +183,8 @@ if __name__ == '__main__':
 
     np.set_printoptions(threshold=1e16)
 
-    lines = np.loadtxt("./data/Aggregation.txt")
+    repo_root = Path(__file__).resolve().parents[3]
+    lines = np.loadtxt(repo_root / 'datasets' / 'Aggregation' / 'data.txt')
     datas = np.array(lines).astype(np.float32)
     start_time = time.time()
     data = datas

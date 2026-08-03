@@ -1,8 +1,10 @@
+scriptDir = fileparts(mfilename('fullpath'));
+repoRoot = fileparts(fileparts(fileparts(fileparts(scriptDir))));
 dataName = 'dataset16';
 %dataName = 'DBRHD';
 fea = [];
 
-load(['',dataName,'.mat'],'ijcnn1')
+load(fullfile(repoRoot, 'datasets', [dataName '.mat']), 'ijcnn1')
 % A = load('2clusters_100.txt')
 % [n,m] = size(B)
 % disp([n,m])

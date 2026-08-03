@@ -1,4 +1,4 @@
-#-------------------------------------------------------------------------
+﻿#-------------------------------------------------------------------------
 #Aim:
 #introduce granular-ball and propose a granular-ball-based DP algorithm, called GB-DP
 # -------------------------------------------------------------------------
@@ -14,11 +14,11 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 from scipy.spatial.distance import pdist, squareform
-# 计算两点距离
+# 璁＄畻涓ょ偣璺濈
 from matplotlib.widgets import RectangleSelector
 from sklearn.cluster import k_means
 import matplotlib
-matplotlib.use('TkAgg')  # 使用支持交互的后端
+matplotlib.use('TkAgg')  # 浣跨敤鏀寔浜や簰鐨勫悗绔?
 
 def draw_point(data):
     N = data.shape[0]
@@ -31,32 +31,32 @@ def draw_point(data):
         plt.title('origin graph')
     plt.show()
 
-# 判断粒球的标签和纯度
+# 鍒ゆ柇绮掔悆鐨勬爣绛惧拰绾害
 def get_num(gb):
-    # 矩阵的行数
+    # 鐭╅樀鐨勮鏁?
     num = gb.shape[0]
     return num
 
-# 返回粒球中心和半径
+# 杩斿洖绮掔悆涓績鍜屽崐寰?
 def calculate_center_and_radius(gb):
-    data_no_label = gb[:,:]#取坐标
-    center = data_no_label.mean(axis=0)#压缩行，对列取均值  取出平均的 x,y
-    radius = np.max((((data_no_label - center) ** 2).sum(axis=1) ** 0.5))  #（x1-x1）**2 + (y1-y2)**2   所有点到中心的距离平均
+    data_no_label = gb[:,:]#鍙栧潗鏍?
+    center = data_no_label.mean(axis=0)#鍘嬬缉琛岋紝瀵瑰垪鍙栧潎鍊? 鍙栧嚭骞冲潎鐨?x,y
+    radius = np.max((((data_no_label - center) ** 2).sum(axis=1) ** 0.5))  #锛坸1-x1锛?*2 + (y1-y2)**2   鎵€鏈夌偣鍒颁腑蹇冪殑璺濈骞冲潎
     return center, radius
 
 def gb_plot(gb_list, plt_type=0):
     plt.figure()
     plt.axis()
     for gb in gb_list:
-        center, radius = calculate_center_and_radius(gb)  # 返回中心和半径
-        if plt_type == 0:  # 绘制所有点
+        center, radius = calculate_center_and_radius(gb)  # 杩斿洖涓績鍜屽崐寰?
+        if plt_type == 0:  # 缁樺埗鎵€鏈夌偣
             plt.plot(gb[:, 0], gb[:, 1], '.', c='k', markersize=5)
-        if plt_type == 0 or plt_type == 1:  # 绘制粒球
+        if plt_type == 0 or plt_type == 1:  # 缁樺埗绮掔悆
             theta = np.arange(0, 2 * np.pi, 0.01)
             x = center[0] + radius * np.cos(theta)
             y = center[1] + radius * np.sin(theta)
             plt.plot(x, y, c='r', linewidth=0.8)
-        plt.plot(center[0], center[1], 'x' if plt_type == 0 else '.', color='r')  # 绘制粒球中心
+        plt.plot(center[0], center[1], 'x' if plt_type == 0 else '.', color='r')  # 缁樺埗绮掔悆涓績
     plt.show()
 
 
@@ -65,53 +65,53 @@ def splits(gb_list, num, splitting_method):
     for gb in gb_list:
         p = get_num(gb)
         if p < num:
-            gb_list_new.append(gb)#该粒球包含的点数小于等于num，那
+            gb_list_new.append(gb)#璇ョ矑鐞冨寘鍚殑鐐规暟灏忎簬绛変簬num锛岄偅
         else:
-            gb_list_new.extend(splits_ball(gb, splitting_method))#反之，进行划分，本来是[[1],[2],[3]]  变成[...,[1],[2],[3]]
+            gb_list_new.extend(splits_ball(gb, splitting_method))#鍙嶄箣锛岃繘琛屽垝鍒嗭紝鏈潵鏄痆[1],[2],[3]]  鍙樻垚[...,[1],[2],[3]]
     return gb_list_new
 
 def splits_ball(gb, splitting_method):
     splits_k = 2
     ball_list = []
 
-    # 数组去重
+    # 鏁扮粍鍘婚噸
     len_no_label = np.unique(gb, axis=0)
     if splitting_method == '2-means':
         if len_no_label.shape[0] < splits_k:
             splits_k = len_no_label.shape[0]
-        # n_init:用不同聚类中心初始化运行算法的次数
-        #random_state，通过固定它的值，每次可以分割得到同样的训练集和测试集
-        label = k_means(X=gb, n_clusters=splits_k, n_init=1, random_state=8)[1]  # 返回标签
+        # n_init:鐢ㄤ笉鍚岃仛绫讳腑蹇冨垵濮嬪寲杩愯绠楁硶鐨勬鏁?
+        #random_state锛岄€氳繃鍥哄畾瀹冪殑鍊硷紝姣忔鍙互鍒嗗壊寰楀埌鍚屾牱鐨勮缁冮泦鍜屾祴璇曢泦
+        label = k_means(X=gb, n_clusters=splits_k, n_init=1, random_state=8)[1]  # 杩斿洖鏍囩
     elif splitting_method == 'center_split':
-        # 采用正、负类中心直接划分
-        p_left = gb[gb[:, 0] == 1, 1:].mean(0)#求坐标平均值
+        # 閲囩敤姝ｃ€佽礋绫讳腑蹇冪洿鎺ュ垝鍒?
+        p_left = gb[gb[:, 0] == 1, 1:].mean(0)#姹傚潗鏍囧钩鍧囧€?
         p_right = gb[gb[:, 0] == 0, 1:].mean(0)
-        distances_to_p_left = distances(gb, p_left)#求出各点到平均点的距离
+        distances_to_p_left = distances(gb, p_left)#姹傚嚭鍚勭偣鍒板钩鍧囩偣鐨勮窛绂?
         distances_to_p_right = distances(gb, p_right)
 
         relative_distances = distances_to_p_left - distances_to_p_right
         label = np.array(list(map(lambda x: 0 if x <= 0 else 1, relative_distances)))
 
     elif splitting_method == 'center_means':
-        # 采用正负类中心作为 2-means 的初始中心点
+        # 閲囩敤姝ｈ礋绫讳腑蹇冧綔涓?2-means 鐨勫垵濮嬩腑蹇冪偣
         p_left = gb[gb[:, 0] == 1, 1:].mean(0)
         p_right = gb[gb[:, 0] == 0, 1:].mean(0)
         centers = np.vstack([p_left, p_right])#[[],[]]
-        label = k_means(X=gb, n_clusters=2, init=centers, n_init=10)[1]#以centers为中心进行聚类
+        label = k_means(X=gb, n_clusters=2, init=centers, n_init=10)[1]#浠enters涓轰腑蹇冭繘琛岃仛绫?
     else:
         return gb
     for single_label in range(0, splits_k):
-        ball_list.append(gb[label == single_label, :])#按照新打的标签分类
+        ball_list.append(gb[label == single_label, :])#鎸夌収鏂版墦鐨勬爣绛惧垎绫?
 
     return ball_list
 
 
-# 距离
+# 璺濈
 def distances(data, p):
     return ((data - p) ** 2).sum(axis=1) ** 0.5
 
 
-#计算所有点到粒球中心的平均距离：
+#璁＄畻鎵€鏈夌偣鍒扮矑鐞冧腑蹇冪殑骞冲潎璺濈锛?
 def get_ball_quality(gb, center):
     N = gb.shape[0]
     ball_quality =  N
@@ -119,8 +119,8 @@ def get_ball_quality(gb, center):
     return ball_quality, mean_r
 
 
-#计算粒球的密度---计算密度的方法二：粒球的密度=粒球的质量/粒球的体积
-#粒球的质量=所有点到中心点的平均距离  体积=粒球半径的维数次方radiusA, dimen, ball_qualitysA
+#璁＄畻绮掔悆鐨勫瘑搴?--璁＄畻瀵嗗害鐨勬柟娉曚簩锛氱矑鐞冪殑瀵嗗害=绮掔悆鐨勮川閲?绮掔悆鐨勪綋绉?
+#绮掔悆鐨勮川閲?鎵€鏈夌偣鍒颁腑蹇冪偣鐨勫钩鍧囪窛绂? 浣撶Н=绮掔悆鍗婂緞鐨勭淮鏁版鏂箁adiusA, dimen, ball_qualitysA
 def ball_density2(radiusAD, ball_qualitysA, mean_rs):
     N = radiusAD.shape[0]
     ball_dens2 = np.zeros(shape=N)
@@ -132,18 +132,18 @@ def ball_density2(radiusAD, ball_qualitysA, mean_rs):
     return ball_dens2
 
 
-#计算粒球的相对距离
+#璁＄畻绮掔悆鐨勭浉瀵硅窛绂?
 def ball_distance(centersAD):
     Y1 = pdist(centersAD)
     ball_distAD = squareform(Y1)
     return ball_distAD
 
-#计算最小密度峰距离以及该点ball_min_dist3
+#璁＄畻鏈€灏忓瘑搴﹀嘲璺濈浠ュ強璇ョ偣ball_min_dist3
 def ball_min_dist(ball_distS, ball_densS):
     N3 = ball_distS.shape[0]
     ball_min_distAD = np.zeros(shape=N3)
     ball_nearestAD = np.zeros(shape=N3)
-    #按密度从大到小排号
+    #鎸夊瘑搴︿粠澶у埌灏忔帓鍙?
     index_ball_dens = np.argsort(-ball_densS)
     for i3, index in enumerate(index_ball_dens):
         if i3 == 0:
@@ -157,7 +157,7 @@ def ball_min_dist(ball_distS, ball_densS):
         ball_min_distAD = ball_min_distAD * 10
     return ball_min_distAD, ball_nearestAD
 
-#画图
+#鐢诲浘
 def ball_draw_decision(ball_densS, ball_min_distS):
     Bval1_start = time.time()
     fig, ax = plt.subplots()
@@ -168,15 +168,15 @@ def ball_draw_decision(ball_densS, ball_min_distS):
         plt.xlabel('density')
         plt.ylabel('min_dist')
         ax.set_title('decision graph')
-        # 矩形选区选择时的回调函数
+        # 鐭╁舰閫夊尯閫夋嫨鏃剁殑鍥炶皟鍑芥暟
     def select_callback(eclick, erelease):
         x1, y1 = eclick.xdata, eclick.ydata
         x2, y2 = erelease.xdata, erelease.ydata
-        lst.append([x1, y1, x2, y2])  # 或根据需要调整这里的代码
+        lst.append([x1, y1, x2, y2])  # 鎴栨牴鎹渶瑕佽皟鏁磋繖閲岀殑浠ｇ爜
 
     RS = RectangleSelector(ax, select_callback,
                            useblit=True,
-                           button=[1, 3],  # 启用左键和右键
+                           button=[1, 3],  # 鍚敤宸﹂敭鍜屽彸閿?
                            minspanx=5, minspany=5,
                            spancoords='pixels',
                            interactive=True)
@@ -188,7 +188,7 @@ def ball_draw_decision(ball_densS, ball_min_distS):
 
 
 
-#找粒球中心点
+#鎵剧矑鐞冧腑蹇冪偣
 def ball_find_centers(ball_densS, ball_min_distS, lst):
     ball_density_threshold = lst[0][0]
     ball_min_dist_threshold = lst[0][1]
@@ -200,13 +200,13 @@ def ball_find_centers(ball_densS, ball_min_distS, lst):
     return np.array(centers)
 
 # def ball_find_centers(ball_densS, ball_min_distS, cl=5):
-#     # 计算ball_densS和ball_min_distS的逐元素乘积
+#     # 璁＄畻ball_densS鍜宐all_min_distS鐨勯€愬厓绱犱箻绉?
 #     product = ball_densS * ball_min_distS
 #
-#     # 找到乘积中最大的cl个值的索引
+#     # 鎵惧埌涔樼Н涓渶澶х殑cl涓€肩殑绱㈠紩
 #     top_cl_indices = np.argsort(-product)[:cl]
 #
-#     # 选择这些索引对应的中心点
+#     # 閫夋嫨杩欎簺绱㈠紩瀵瑰簲鐨勪腑蹇冪偣
 #     centers = []
 #     for index in top_cl_indices:
 #         centers.append(index)
@@ -244,12 +244,12 @@ def ball_draw_cluster(centersA, radiusA, ball_labs, dic_colors, gb_list, ball_ce
     with open('point_labels.txt', 'w') as file:
         for gb, cluster_label in zip(gb_list, ball_labs):
             for point in gb:
-                # 将点的所有坐标转换为由空格分隔的字符串
+                # 灏嗙偣鐨勬墍鏈夊潗鏍囪浆鎹负鐢辩┖鏍煎垎闅旂殑瀛楃涓?
              #   point_str = ' '.join(map(str, point))
-             #   point_str = ' '.join(map(lambda x: str(int(x)), point)) # 将点的所有坐标转换为整数，然后转换为由空格分隔的字符串
-                # 使用 repr() 生成浮点数的字符串表示，保留原始精度
+             #   point_str = ' '.join(map(lambda x: str(int(x)), point)) # 灏嗙偣鐨勬墍鏈夊潗鏍囪浆鎹负鏁存暟锛岀劧鍚庤浆鎹负鐢辩┖鏍煎垎闅旂殑瀛楃涓?
+                # 浣跨敤 repr() 鐢熸垚娴偣鏁扮殑瀛楃涓茶〃绀猴紝淇濈暀鍘熷绮惧害
                 point_str = ' '.join(map(repr, point))
-                # 将点的所有坐标转换为小数格式的字符串，保留15位小数
+                # 灏嗙偣鐨勬墍鏈夊潗鏍囪浆鎹负灏忔暟鏍煎紡鐨勫瓧绗︿覆锛屼繚鐣?5浣嶅皬鏁?
             #    point_str = ' '.join(f"{float(coord):.15f}" for coord in point)
             #    file.write(f"{point_str} {cluster_label}\n")
                 file.write(f"{cluster_label}\n")
@@ -257,7 +257,10 @@ def ball_draw_cluster(centersA, radiusA, ball_labs, dic_colors, gb_list, ball_ce
 
 
 if __name__ == "__main__":
-    dic_colors = {0: (.8, 0, 0), 1: (0, .8, 0),
+    from pathlib import Path
+
+    repo_root = Path(__file__).resolve().parents[2]
+dic_colors = {0: (.8, 0, 0), 1: (0, .8, 0),
                   2: (0, 0, .8), 3: (.8, .8, 0),
                   4: (.8, 0, .8), 5: (0, .8, .8),
                   6: (0, 0, 0), 7: (0.8, 0.8, 0.8),
@@ -278,33 +281,33 @@ if __name__ == "__main__":
     np.set_printoptions(threshold=1e16)
 
     #data_mat = np.loadtxt('data/Skin.txt')
-    # data = np.loadtxt(r'D:\Datasets\3M2D5\data.txt')
-    # data_mat = np.loadtxt(r'L:\数据集\Flower\data.txt')
-    data = np.loadtxt(r'D:\Datasets\N-BaIot\whole_data.txt')
+    # data = np.loadtxt(repo_root / 'datasets' / '3M2D5' / 'data.txt')
+    # data_mat = np.loadtxt(repo_root / 'datasets' / 'Flower' / 'data.txt')
+    data = np.loadtxt(repo_root / 'datasets' / 'N-BaIoT' / 'whole_data.txt')
 
-    #开始时间
+    #寮€濮嬫椂闂?
     start = time.time()
     # data = data_mat
     num = np.ceil(np.sqrt(data.shape[0]))
     # print(max_radius)
     gb_list = [data]
-    #全部粒球的展示，不包括在时间的计算中
+    #鍏ㄩ儴绮掔悆鐨勫睍绀猴紝涓嶅寘鎷湪鏃堕棿鐨勮绠椾腑
     # draw_point(data)
-    #绘制初始粒球
+    #缁樺埗鍒濆绮掔悆
     # gb_plot(gb_list)
     while True:
-        ball_number_1 = len(gb_list)  # 点数
+        ball_number_1 = len(gb_list)  # 鐐规暟
         gb_list = splits(gb_list, num=num, splitting_method='2-means')
-        ball_number_2 = len(gb_list)  # 被划分成了几个
+        ball_number_2 = len(gb_list)  # 琚垝鍒嗘垚浜嗗嚑涓?
         # gb_plot(gb_list)
-        if ball_number_1 == ball_number_2:  # 没有划分出新的粒球
+        if ball_number_1 == ball_number_2:  # 娌℃湁鍒掑垎鍑烘柊鐨勭矑鐞?
             break
 
 
     centers = []
     radiuss = []
-    ball_num = []#粒球里面的元素个数
-    ball_qualitys = []#每个粒球的质量
+    ball_num = []#绮掔悆閲岄潰鐨勫厓绱犱釜鏁?
+    ball_qualitys = []#姣忎釜绮掔悆鐨勮川閲?
     mean_rs = []
     i = 0
     for gb in gb_list:
@@ -318,17 +321,17 @@ if __name__ == "__main__":
     centersA = np.array(centers)
     radiusA = np.array(radiuss)
     ball_numA = np.array(ball_num)
-    ball_qualitysA = np.array(ball_qualitys)#每一个粒球的半径和中心
+    ball_qualitysA = np.array(ball_qualitys)#姣忎竴涓矑鐞冪殑鍗婂緞鍜屼腑蹇?
     print('radiusA:',radiusA)
     print('ball_qualitysA:', ball_qualitysA)
     print('mean_rs:', mean_rs)
     ball_densS = ball_density2(radiusA, ball_qualitysA, mean_rs)
 
-    #计算每个粒球的相对距离
+    #璁＄畻姣忎釜绮掔悆鐨勭浉瀵硅窛绂?
     ball_distS = ball_distance(centersA)
-    #计算最小密度峰距离以及该点ball_min_dist  ball_min_distAD, ball_nearestAD
+    #璁＄畻鏈€灏忓瘑搴﹀嘲璺濈浠ュ強璇ョ偣ball_min_dist  ball_min_distAD, ball_nearestAD
     ball_min_distS, ball_nearest = ball_min_dist(ball_distS, ball_densS)
-    # Bval1选中中心所花的时间
+    # Bval1閫変腑涓績鎵€鑺辩殑鏃堕棿
     start1 = time.time()
     lst, Bval1 = ball_draw_decision(ball_densS, ball_min_distS)
     end1 = time.time()
@@ -337,13 +340,14 @@ if __name__ == "__main__":
     ball_labs = ball_cluster(ball_densS, ball_centers, ball_nearest, ball_min_distS)
     end = time.time()
  #   times = (end - start) - (end1 - start1)
- #   print('The running time is：%s s ' % (times))       原本把时间放这
+ #   print('The running time is锛?s s ' % (times))       鍘熸湰鎶婃椂闂存斁杩?
     print('Please wait for drawing clustering results......')
-    # 最后的聚类结果
+    # 鏈€鍚庣殑鑱氱被缁撴灉
     ball_draw_cluster(centersA, radiusA, ball_labs, dic_colors, gb_list, ball_centers)
-    times = (end - start) - (end1 - start1)         #  我觉得应该放着
-    print('The running time is：%s s ' % (times))
+    times = (end - start) - (end1 - start1)         #  鎴戣寰楀簲璇ユ斁鐫€
+    print('The running time is锛?s s ' % (times))
     print('Complete!')
+
 
 
 

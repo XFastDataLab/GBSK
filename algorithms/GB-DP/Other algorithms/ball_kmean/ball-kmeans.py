@@ -1,4 +1,5 @@
 import ctypes
+from pathlib import Path
 class ball_k_means:
     def __init__(self, isRing = 0):
         self.isRing = isRing
@@ -18,8 +19,9 @@ class ball_k_means:
             dll.ball_kmeans(s1.encode('utf-8'), s2.encode('utf-8'))
 
 if __name__ == '__main__':
-    dataset_address = "./data/Dataset2.txt"
+    repo_root = Path(__file__).resolve().parents[4]
+    dataset_address = repo_root / "datasets" / "Dataset2" / "data.txt"
     centriod_address = ""
     clf = ball_k_means(isRing=0)
     print(clf)
-    clf.fit(dataset_address, centriod_address)
+    clf.fit(str(dataset_address), centriod_address)

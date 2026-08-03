@@ -1,0 +1,44 @@
+{
+  "paper_source": "upload 31 Jul/TPAMI-2025-07-1987.R2_Li/GBSK.tex",
+  "default_repro_scope": "main_paper_plus_key_appendix",
+  "reproduction_groups": [
+    {
+      "name": "visual_demos",
+      "datasets": ["SYN1", "SYN2", "SYN3", "Twenty", "Chainlink"],
+      "goal": "recover the topology shown in the paper figures"
+    },
+    {
+      "name": "small_quality",
+      "datasets": ["S3", "EngyTime", "Twenty", "Segmentation", "Waveform", "Pendigits"],
+      "goal": "reproduce the small-scale ACC/ARI/AMI table"
+    },
+    {
+      "name": "large_scale",
+      "datasets": ["Pendigits", "DryBean", "MoCap", "CoverType", "3M2D5", "MNIST", "CIFAR-10", "MNIST8M", "AGC100M"],
+      "goal": "reproduce scalability and runtime trends"
+    },
+    {
+      "name": "sensitivity",
+      "datasets": ["N-BaIoT", "AGC100M", "MNIST8M"],
+      "goal": "reproduce parameter sensitivity on alpha, s, and M"
+    },
+    {
+      "name": "ablation",
+      "datasets": ["Pendigits", "MNIST", "N-BaIoT", "MNIST8M", "AGC100M"],
+      "goal": "reproduce the core ablation findings"
+    }
+  ],
+  "default_assumptions": {
+    "metric_target": "trend_and_ranking_consistency",
+    "large_data_policy": "documented_download_only",
+    "seed_policy": "recorded_in_log_but_not_fixed_globally"
+  },
+  "smoke_tests": [
+    {"dataset": "Pendigits", "type": "GBSK", "entrypoint": "algorithms/GBSK/demo1.m"},
+    {"dataset": "MNIST", "type": "GBSK", "entrypoint": "algorithms/GBSK/demo2.m"},
+    {"dataset": "3M2D5", "type": "GBSK", "entrypoint": "algorithms/GBSK/main.m"},
+    {"dataset": "Pendigits", "type": "baseline", "entrypoint": "algorithms/KMeansPlus/KMeansPlus.m"},
+    {"dataset": "CoverType", "type": "baseline", "entrypoint": "algorithms/FHC-LDP/main.m"},
+    {"dataset": "MNIST", "type": "baseline", "entrypoint": "algorithms/Fast-LDP-MST/demo2.m"}
+  ]
+}

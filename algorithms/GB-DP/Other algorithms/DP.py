@@ -250,7 +250,8 @@ if __name__ == "__main__":
 
     np.set_printoptions(threshold=1e8)
 
-    lines = np.loadtxt("./data/Aggregation.txt")
+    repo_root = Path(__file__).resolve().parents[3]
+    lines = np.loadtxt(repo_root / 'datasets' / 'Aggregation' / 'data.txt')
 
     datas = np.array(lines)
     print(datas)
