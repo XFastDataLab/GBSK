@@ -1,7 +1,7 @@
 # GBSK
 
 GBSK (Granular-Ball SKeleton clustering) is a MATLAB implementation for scalable clustering on large-scale data.
-This repository packages the public code path, demo data, and reproduction entrypoints for [the accepted TPAMI paper](https://doi.org/10.1109/TPAMI.2026.3719829), including the [main script](./paper/GBSK%20main%20script.pdf) and [supplementary material](./paper/GBSK%20supplementary%20material.pdf).
+This repository packages the public code path, demo data, and reproduction entrypoints for [the accepted TPAMI paper](https://doi.org/10.1109/tpami.2026.3719825), including the [main script](./paper/GBSK%20main%20script.pdf) and [supplementary material](./paper/GBSK%20supplementary%20material.pdf).
 
 ## Quick Start
 
