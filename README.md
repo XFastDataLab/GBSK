@@ -1,7 +1,7 @@
 # GBSK
 
 GBSK (Granular-Ball SKeleton clustering) is a MATLAB implementation for scalable clustering on large-scale data.
-This repository packages the public code path, demo data, and reproduction entrypoints for the accepted TPAMI paper.
+This repository packages the public code path, demo data, and reproduction entrypoints for [the accepted TPAMI paper](https://doi.org/10.1109/TPAMI.2026.3719829), including the [main script](./paper/GBSK%20main%20script.pdf) and [supplementary material](./paper/GBSK%20supplementary%20material.pdf).
 
 ## Quick Start
 
@@ -26,7 +26,6 @@ Outputs are written to `experiment outcomes/<dataset>/...` under the repository 
 
 ## Reproduction Scope
 
-The paper source of truth is `upload 31 Jul/TPAMI-2025-07-1987.R2_Li/GBSK.tex`.
 The public release focuses on the experiments explicitly described there:
 
 - Visual demos: `SYN1`, `SYN2`, `SYN3`, `Twenty`, `Chainlink`
@@ -146,18 +145,20 @@ See `reproduction_manifest.json` for a machine-readable list of the paper’s ma
 ## Citation
 
 ```bibtex
-@article{chen2025GBSK,
-  title={GBSK: Skeleton Clustering via Granular-Ball Computing and Multi-Sampling for Large-Scale Data},
-  author={Yewang Chen and Junfeng Li and Shuyin Xia and Qinghong Lai and Xinbo Gao and Guoyin Wang and Dongdong Cheng and Yi Liu and Yi Wang},
-  year={2025},
-  eprint={2509.23742},
-  archivePrefix={arXiv},
-  primaryClass={cs.LG}
-}
+@ARTICLE{11641755,
+  author={Chen, Yewang and Li, Junfeng and Xia, Shuyin and Lai, Qinghong and Gao, Xinbo and Wang, Guoyin and Cheng, Dongdong and Liu, Yi and Wang, Yi},
+  journal={IEEE Transactions on Pattern Analysis and Machine Intelligence}, 
+  title={GBSK: Skeleton Clustering via Granular-ball Computing and Multi-Sampling for Large-Scale Data}, 
+  year={2026},
+  volume={},
+  number={},
+  pages={1-13},
+  keywords={Skeleton;Algorithms;Educational institutions;Labeling;Machining;Timing;Conferences;Runtime;Accuracy;Computers;Granular-ball;Skeleton Clustering;Multiple Sampling;KDE},
+  doi={10.1109/TPAMI.2026.3719825}}
 ```
 
 ## 中文快速开始
 
-- 论文正文以 `upload 31 Jul/TPAMI-2025-07-1987.R2_Li/GBSK.tex` 为准。
+- 论文正文以 `./paper/GBSK main script.pdf` 为准。
 - 运行 `algorithms/GBSK/demo1.m` 或 `demo/demo1.m` 可直接看 `Pendigits` 示例。
 - 大规模实验建议先准备对应数据，再运行 `algorithms/GBSK/main_big.m`。
